@@ -40,6 +40,7 @@ export const Task = ({
     >
       <VisuallyHidden>Archive</VisuallyHidden>
     </Checkbox>
+    <div>test</div>
     <Box width="full" as="label">
       <VisuallyHidden>Edit</VisuallyHidden>
       <Input
