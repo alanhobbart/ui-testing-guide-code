@@ -1,7 +1,11 @@
 # .github/workflows/chromatic.yml
 
 # Other configuration required
-
+on:
+  push:
+    branches-ignore:
+      - 'example' # 👈 Excludes the example branch
+      
 jobs:
   chromatic-deployment:
     steps:
