@@ -82,6 +82,8 @@ jobs:
           key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-v1
+      - name: Run storybook
+        run: yarn storybook
       - name: Test storybook run
         uses: cypress-io/github-action@v2
         with:
