@@ -19,9 +19,6 @@ jobs:
           key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-v1
-       - uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
       - name: Install dependencies if cache invalid
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
@@ -61,7 +58,11 @@ jobs:
           key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-v1
-      - name: Run Storybook tests
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Test storybook run
         run: yarn test-storybook:ci
         
   # Run visual and composition tests with Chromatic
