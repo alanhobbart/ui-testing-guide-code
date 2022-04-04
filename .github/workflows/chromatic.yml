@@ -82,12 +82,10 @@ jobs:
           key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-v1
-      - name: Run storybook
-        run: yarn storybook
       - name: Test storybook run
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm run test-storybook
+        run: |
+          yarn build
+          yarn test-storybook:ci
   # Run user flow tests with Cypress
   user-flow:
     runs-on: ubuntu-latest
